@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Moja niespodzianka</title>
+  <!-- Ten sam font co w index.html (o ile używasz Pacifico) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* PODSTAWOWE STYLOWANIE STRONY */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* czarne tło */
+      color: #ff69b4;        /* różowy tekst */
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      position: relative;
+      overflow-x: hidden; /* żeby nie pojawiał się poziomy pasek */
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 2.5em;
+      z-index: 2;
+      position: relative;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 20px auto;
+      max-width: 600px;
+      line-height: 1.6;
+      z-index: 2;
+      position: relative;
+    }
+	
+	.tekscior {
+	  font-family: 'Cascadia Code', cursive;
+	}
+
+    /* SEKCJA ZE ZDJĘCIAMI */
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .images img {
+      max-width: 200px;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+    }
+
+    /* POJEMNIK NA SPADAJĄCE SERCUSZKA */
+    .falling-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* brak interakcji z myszką */
+      z-index: 1;           /* pod treścią, ale nad tłem */
+      overflow: hidden;
+    }
+
+    /* POJEDYNCZE SERCE */
+    .heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ff69b4;
+      
+      /* Obracamy kwadrat o 45° (podstawa serca) */
+      transform: rotate(45deg);
+
+      /* Aby serca spadały w dół przez 5s */
+      animation: fall 5s linear infinite;
+      /*
+       Możesz dostosować liczbę sekund (5s -> 8s, 10s) i rodzaj animacji (linear, ease, itp.)
+       żeby zmienić szybkość spadania i styl animacji
+      */
+    }
+
+    /* Górne "zaokrąglenia" serca – dwa kółka */
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ff69b4;
+      border-radius: 50%;
+    }
+
+    /* Lewa „połówka” serca */
+    .heart::before {
+      top: -20px;  /* przesunięcie w górę o połowę wysokości */
+      left: 0;
+    }
+
+    /* Prawa „połówka” serca */
+    .heart::after {
+      left: -20px; /* przesunięcie w lewo o połowę szerokości */
+      top: 0;
+    }
+
+    /* Kluczowe klatki animacji "fall" */
+    @keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Takie skromne życzenia na dzień kobiet (twój)</h1>
+  <p class="tekscior">
+    Mój słodziaczku kolorowy, kochany:
+  </p>
+  <p class="tekscior">
+    Wszystkiego najlepszego ci życzę <br>
+    Bądź szczęśliwa, nie smuć się, bo jesteś naj naj <br>
+    Życzę również powodzonka w pracy licencjackiej, zdasz to na spokojnie :)) <br>
+    Obyś była zdrowa jak rybka, bo cb potrzebuje na conajmniej 88 lat przy sobie!!! <br>
+  </p>
+  
+  <h2>KOCHAM CIE ❤❤❤❤</h2>
+    <!-- SEKCJA ZE ZDJĘCIAMI (przykładowe obrazki) -->
+  <div class="images">
+    <img src="chihuahua.jpg" alt="Obrazek 1" />
+    <img src="piwonia.jpg" alt="Obrazek 2" />
+    <img src="lalkadupka.jpg" alt="Obrazek 3" />
+    <img src="hellokitty.jpg" alt="Obrazek 4" />
+  </div>
+  
+  <!-- POJEMNIK NA SPADAJĄCE SERCUSZKA -->
+  <div class="falling-hearts">
+    <!-- Każdy div .heart to jedno serce.
+         Zmieniaj style inline: left, animation-delay, itp. 
+         żeby rozmieścić i „rozsynchronizować” serduszka -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 25%; animation-delay: 1s;"></div>
+    <div class="heart" style="left: 40%; animation-delay: 2s;"></div>
+    <div class="heart" style="left: 55%; animation-delay: 1.5s;"></div>
+    <div class="heart" style="left: 70%; animation-delay: 3s;"></div>
+    <div class="heart" style="left: 85%; animation-delay: 2.5s;"></div>
+    <!-- Dodawaj kolejne, jeśli chcesz więcej serc -->
+  </div>
+</body>
+</html>
